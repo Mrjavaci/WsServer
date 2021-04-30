@@ -1,0 +1,23 @@
+{
+  "name": "wsserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mrjavaci/WsServer.git"
+  },
+  "author": "mrjavaci",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mrjavaci/WsServer/issues"
+  },
+  "homepage": "https://github.com/Mrjavaci/WsServer#readme",
+  "dependencies": {
+    "ws": "^7.4.5"
+  }
+}
