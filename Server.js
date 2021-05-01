@@ -46,14 +46,23 @@ wss.on('connection', function connection(ws, req) {
                         if (connection.who === whoSend) {
                             wss.clients.forEach(function each(client) {
                                 if (client._socket.remoteAddress === connection.ip) {
-                                    client.send({"data": whatSend, "operationId": opreationId});
+                                    client.send(JSON.stringify({"data": whatSend, "operationId": opreationId}));
                                 }
                             })
                         }
                     });
-
-
-                } else if (operation === "responseSendAndReceive") {
+                } else if (operation === "responseSendAndReceive") { // broadcast işleminin sonucu olarak client'ten gelen datayı diğer client'e aktarmak için.
+                    let opId = myObj.opId;
+                    let response = myObj.response;
+                    broadcasts.forEach(function each(broadcast) {
+                        if (myObj.opId === opId) {
+                            wss.clients.forEach(function each(client) {
+                                if (client._socket.remoteAddress === broadcast.ip) {
+                                    client.send(JSON.stringify({"response": response, "operationId": opId}))
+                                }
+                            });
+                        }
+                    });
 
                 }
             }
